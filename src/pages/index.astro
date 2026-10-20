@@ -1,0 +1,19 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ProjectVisual from '../components/ProjectVisual.astro';
+import { projects, profile } from '../data/site';
+---
+<BaseLayout title="Engineering & Research" description="Isabelle P. Ho' engineering portfolio, featuring space systems, optical communications, power electronics, and link-budget research.">
+  <section class="hero-dark" id="top">
+    <div class="shell hero-layout">
+      <div class="hero-topline"><span class="eyebrow light">ELECTRICAL ENGINEERING <span class="slash">/</span> AEROSPACE SYSTEMS</span><span class="hero-index">PORTFOLIO / 2026</span></div>
+      <div class="hero-main"><p class="hero-kicker"><span class="status-dot"></span> Building, modeling, questioning.</p><h1>Curiosity,<br/><em>engineered.</em></h1><p class="hero-deck">I explore complex engineering problems through simulation, research, and thoughtful design, from spacecraft power systems to optical communications.</p><div class="hero-actions"><a class="button button-light" href="#work">Explore my work <span>↘</span></a><a class="quiet-link" href="/about/">More about me <span>↗</span></a></div></div>
+      <div class="hero-bottom"><span>RESEARCH. SIMULATION. ELECTRONICS.</span><span>SCROLL TO EXPLORE <span aria-hidden="true">↓</span></span></div>
+      <div class="hero-orbit" aria-hidden="true"><div class="hero-orbit-core"></div><div class="hero-orbit-one"></div><div class="hero-orbit-two"></div><div class="hero-orbit-node"></div></div>
+    </div>
+  </section>
+  <section class="intro-section section-spacing"><div class="shell intro-grid"><p class="eyebrow">01 / INTRODUCTION</p><div><h2>Engineering is an exercise in <span class="serif-accent">connecting systems.</span></h2><p class="intro-copy">My work sits at the intersection of electrical engineering, aerospace, and computational modeling. I’m interested in how individual technical decisions shape the performance of an entire system.</p><a href="/about/" class="text-link">A little more about me <span>↗</span></a></div></div></section>
+  <section class="work-section section-spacing" id="work"><div class="shell"><div class="section-heading"><div><p class="eyebrow">02 / SELECTED WORK</p><h2>Projects & research<span class="period">.</span></h2></div><p>Four projects across simulation, communications, and power electronics. Select one to explore the thinking behind the work.</p></div><div class="project-grid">{projects.map((project) => <a class="project-card" href={`/projects/${project.slug}/`}><ProjectVisual project={project} /><div class="card-metadata"><span>{project.eyebrow}</span><span>{project.number} / 04</span></div><div class="card-title-row"><h3>{project.title}</h3><span class="project-arrow" aria-hidden="true">↗</span></div><p>{project.summary}</p></a>)}</div></div></section>
+  <section class="statement-section"><div class="shell statement-inner"><p class="eyebrow light">03 / HOW I WORK</p><blockquote>“Understand the fundamentals. Build the model. Test the assumptions. Refine the design.”</blockquote><p>THE THROUGHLINE / CURIOSITY MEETS RIGOR</p></div></section>
+  <section class="contact-banner section-spacing"><div class="shell contact-grid"><div><p class="eyebrow">04 / WHAT'S NEXT</p><h2>Still exploring.<br/><span class="serif-accent">Always building.</span></h2></div><div><p>Interested in aerospace systems, research, and engineering problems that reward both careful analysis and experimentation.</p><a class="button button-dark" href="/about/#contact">Get in touch <span>↗</span></a></div></div></section>
+</BaseLayout>

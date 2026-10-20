@@ -1,0 +1,37 @@
+---
+import '../styles/global.css';
+import { profile } from '../data/site';
+interface Props { title: string; description?: string; }
+const { title, description = 'Engineering portfolio: aerospace systems, electrical engineering, modeling, and research.' } = Astro.props;
+const current = Astro.url.pathname;
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#101e2a" />
+    <meta name="description" content={description} />
+    <title>{title} | {profile.name}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="shell header-inner">
+        <a class="wordmark" href="/" aria-label={`${profile.name} home`}>{profile.initials}<span class="wordmark-dot">.</span><span class="wordmark-full"> {profile.name}</span></a>
+        <nav aria-label="Primary navigation">
+          <a class:list={[{active: current === '/'}, 'nav-link']} href="/">Home</a>
+          <a class:list={[{active: current.startsWith('/projects')}, 'nav-link']} href="/#work">Projects</a>
+          <a class:list={[{active: current === '/about/'}, 'nav-link']} href="/about/">About</a>
+          <a class="nav-contact" href="/about/#contact">Get in touch <span aria-hidden="true">↗</span></a>
+        </nav>
+      </div>
+    </header>
+    <main><slot /></main>
+    <footer class="site-footer">
+      <div class="shell footer-inner"><span>{profile.name} <span class="muted">/ Engineering portfolio</span></span><span>Designed to evolve. © {new Date().getFullYear()}</span><a href="#top" aria-label="Back to top">Back to top ↑</a></div>
+    </footer>
+  </body>
+</html>

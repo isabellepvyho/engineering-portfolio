@@ -1,0 +1,16 @@
+---
+import type { Project } from '../data/site';
+interface Props { project: Project; large?: boolean; }
+const { project, large = false } = Astro.props;
+---
+<div class:list={['project-visual', `visual-${project.visual}`, { 'visual-large': large }]}>
+  {project.image ? <img src={project.image} alt={`${project.title} project imagery`} loading="lazy" /> : <div class="visual-content" aria-label={project.imageNote}>
+    <div class="visual-grid" aria-hidden="true"></div>
+    {project.visual === 'orbit' && <><div class="planet"></div><div class="orbit-ring"></div><div class="satellite-point"></div></>}
+    {project.visual === 'optical' && <><div class="optical-source"></div><div class="optical-beam"></div><div class="optical-target"></div></>}
+    {project.visual === 'circuit' && <><div class="circuit-lines"><span></span><span></span><span></span><span></span></div><div class="circuit-node n1"></div><div class="circuit-node n2"></div><div class="circuit-node n3"></div></>}
+    {project.visual === 'signal' && <div class="signal-bars" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>}
+    <div class="visual-tag">{project.number} / {project.eyebrow}</div>
+    <div class="visual-placeholder">IMAGE PLACEHOLDER <span>↗</span></div>
+  </div>}
+</div>
